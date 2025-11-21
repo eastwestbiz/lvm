@@ -77,7 +77,7 @@
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
-        includedLanguages: 'en,hi,mr,kn,te,ta,ml,pa,gu,bn,ur,as',
+        includedLanguages: 'en,hi,mr,kn,te,ta,ml,pa,gu,or,bn,ur,as',
         layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
         autoDisplay: false,
         multilanguagePage: false
@@ -147,7 +147,7 @@
         <div class="col-lg-6 col-md-12">
           <div class="header-content">
             <h2><A>LV MANSION</A></h2>
-            <p> ADDRESS: No.16, 13th CROSS,
+            <p> ADDRESS : No.16,13th CROSS,
               <br>SIR M VISHVESHVARAIAH LAYOUT,
               <br>KODIGEHALLI EXTENSION,
               <br>BENGALURU NORTH,
@@ -357,7 +357,46 @@
         // Placeholder: any future heavy init goes here
       });
     })();
+    // Overwrite the Google Translate initialization to remove Oriya (or)
+    window.googleTranslateElementInit = function() {
+      new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,hi,mr,kn,te,ta,ml,pa,gu,bn,ur,as',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false,
+      multilanguagePage: false
+      }, 'google_translate_element');
 
+      // Function to apply stored language
+      function applyStoredLang() {
+      var storedLang = localStorage.getItem('googleTranslateLanguage');
+      if (storedLang) {
+        var select = document.querySelector('.goog-te-combo');
+        if (select) {
+        select.value = storedLang;
+        select.dispatchEvent(new Event('change'));
+        }
+      }
+      }
+
+      // Use a MutationObserver to wait for the widget to be added to the DOM
+      var observer = new MutationObserver(function(mutations, obs) {
+      var select = document.querySelector('.goog-te-combo');
+      if (select) {
+        applyStoredLang();
+        // Store language on change
+        select.addEventListener('change', function() {
+        localStorage.setItem('googleTranslateLanguage', select.value);
+        });
+        obs.disconnect(); // Stop observing once the element is found and configured
+      }
+      });
+
+      observer.observe(document.getElementById('google_translate_element'), {
+      childList: true,
+      subtree: true
+      });
+    };
     // Google Fonts loader for translation languages
     window.WebFontConfig = {
       google: {
