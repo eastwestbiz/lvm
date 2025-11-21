@@ -31,6 +31,7 @@
   <meta name="twitter:description" content="LV Mansion: No.16, 13th Cross, Sir M. Visvesvaraya Layout, Kodigehalli Extension, Bengaluru, Karnataka - 560097." />
   <meta name="twitter:image" content="https://www.lvmansion.in/assets/images/header/lvmansion-hero.jpg" />
 
+
   <!-- SEO: Structured Data for Local Business -->
   <script type="application/ld+json">
   {
@@ -291,6 +292,27 @@
           document.head.appendChild(l);
         }
       });
+      function loadScript(src) {
+        return new Promise((res, rej) => {
+          if (document.querySelector('script[src="' + src + '"]')) return res();
+          const s = document.createElement('script');
+          s.src = src;
+          s.async = true;
+          s.onload = res;
+          s.onerror = rej;
+          document.head.appendChild(s);
+        });
+      }
+      const optionalLibs = [
+        'assets/js/glightbox.min.js',
+        'assets/js/tiny-slider.js',
+        'assets/js/main.js'
+      ];
+      function loadOptional() {
+        let chain = Promise.resolve();
+        optionalLibs.forEach(lib => { chain = chain.then(() => loadScript(lib)); });
+      }
+      (window.requestIdleCallback || function (cb) { setTimeout(cb, 120); })(loadOptional);
 
       ['scroll','touchstart','touchmove','wheel'].forEach(evt => {
         window.addEventListener(evt, function(){}, { passive: true });
@@ -329,6 +351,12 @@
         a.addEventListener('mouseenter', prefetch, { passive: true });
         a.addEventListener('focus', prefetch);
       });
+      function chunk(fn) {
+        (window.requestIdleCallback || setTimeout)(fn, 0);
+      }
+      chunk(() => {
+        // Placeholder: any future heavy init goes here
+      });
     })();
 
     // Google Fonts loader for translation languages
@@ -362,6 +390,37 @@
       const s = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(wf, s);
     })();
+    // Function to handle dynamic script loading with defer
+    function loadScript(src, isAsync = true) {
+      if (document.querySelector(`script[src="${src}"]`)) {
+        return; // Script already loaded or loading
+      }
+      const script = document.createElement('script');
+      script.src = src;
+      if (isAsync) {
+        script.async = true;
+      } else {
+        script.defer = true;
+      }
+      document.body.appendChild(script);
+    }
+
+    // Defer loading of non-critical JS after page is interactive
+    document.addEventListener('DOMContentLoaded', () => {
+      // Use requestIdleCallback for non-essential scripts to avoid blocking main thread
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(initOptionalFeatures);
+      } else {
+        setTimeout(initOptionalFeatures, 500); // Fallback for older browsers
+      }
+    });
+
+    function initOptionalFeatures() {
+      // Scripts for sliders, lightboxes etc. can be loaded when browser is idle
+      loadScript('assets/js/tiny-slider.js');
+      loadScript('assets/js/glightbox.min.js');
+      loadScript('assets/js/main.js'); // Assuming this contains component initializations
+    }
 
     // Preload key assets on user interaction to speed up navigation
     (function() {
@@ -395,6 +454,27 @@
       });
     })();
 
+    (function() {
+      // Ensure critical images like the logo are not lazy-loaded and are prioritized.
+      const logoImages = document.querySelectorAll('img[src="assets/image/edeglobal.jpg"]');
+      logoImages.forEach(img => {
+        // Remove lazy loading in case it was added by a generic script.
+        img.removeAttribute('loading');
+        // Ensure it loads eagerly as it's a critical, above-the-fold element.
+        img.setAttribute('loading', 'eager');
+        img.setAttribute('fetchpriority', 'high');
+      });
+
+      // To make the logo load faster, we can add a preload link to the document head.
+      // This tells the browser to fetch this resource with high priority.
+      if (!document.querySelector('link[href="assets/image/edeglobal.jpg"]')) {
+        const preloadLink = document.createElement('link');
+        preloadLink.rel = 'preload';
+        preloadLink.as = 'image';
+        preloadLink.href = 'assets/image/edeglobal.jpg';
+        document.head.appendChild(preloadLink);
+      }
+    })();
 
   </script>
 </body>
