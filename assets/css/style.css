@@ -1703,3 +1703,17 @@ p {
                     color: #0f5132;
                   }
 
+/* Font Family for Indian Languages */
+    body {
+      font-family: "Noto Sans", 
+      "Noto Sans Devanagari", 
+      "Noto Sans Kannada", 
+      "Noto Sans Telugu", 
+      "Noto Sans Tamil", 
+      "Noto Sans Malayalam", 
+      "Noto Sans Gurmukhi", 
+      "Noto Sans Gujarati", 
+      "Noto Sans Oriya", 
+      "Noto Sans Bengali", 
+      "Noto Nastaliq Urdu", sans-serif;
+    }                  
