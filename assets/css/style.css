@@ -96,6 +96,7 @@ p {
 .primary-btn {
   background-color: var(--primary-color);
   color: var(--white);
+  padding: 12px 30px;
 }
 
 .primary-btn:hover {
@@ -115,6 +116,12 @@ p {
   color: var(--white);
   transform: translateY(-2px);
   box-shadow: var(--shadow);
+}
+
+@media (max-width: 767px) {
+  .btn {
+    margin-bottom: 15px;
+  }
 }
 
 /* Navbar */
