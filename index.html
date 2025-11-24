@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Meta -->
+  <!-- Meta Configuration -->
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="theme-color" content="#0d6efd" />
+
+  <!-- SEO & Page Info -->
   <title>LV Mansion Bengaluru | Sir M. Visvesvaraya Layout, Kodigehalli</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="LV Mansion is a property located at No.16, 13th Cross, Sir M. Visvesvaraya Layout, Kodigehalli Extension, Bengaluru, Karnataka, 560097." />
+  <meta name="description" content="LV Mansion is a premier residence located at No.16, 13th Cross, Sir M. Visvesvaraya Layout, Kodigehalli Extension, Bengaluru, Karnataka, 560097." />
   <meta name="keywords" content="LV Mansion, Bengaluru, Sir M Vishveshvaraiah Layout, Kodigehalli Extension, property in Bengaluru, residence 560097, LV Mansion Karnataka" />
   <meta name="author" content="LV Mansion Bengaluru" />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#0d6efd" />
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://www.lvmansion.in/" />
@@ -24,15 +26,15 @@
   <meta property="og:site_name" content="LV Mansion Bengaluru" />
   <meta property="og:locale" content="en_IN" />
 
-  <!-- Twitter -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://www.lvmansion.in/" />
   <meta name="twitter:title" content="LV Mansion Bengaluru | Sir M. Visvesvaraya Layout" />
   <meta name="twitter:description" content="LV Mansion: No.16, 13th Cross, Sir M. Visvesvaraya Layout, Kodigehalli Extension, Bengaluru, Karnataka - 560097." />
   <meta name="twitter:image" content="https://www.lvmansion.in/assets/images/header/lvmansion-hero.jpg" />
 
-
-  <!-- SEO: Structured Data for Local Business -->
+  <!-- SEO: Structured Data (JSON-LD) for Local Business/Residence -->
+  <!-- Optimized coordinates to match Google Maps pin exactly -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -48,31 +50,46 @@
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 13.071874,
-      "longitude": 77.570331
+      "latitude": 13.0718692,
+      "longitude": 77.5729069
     },
     "url": "https://www.lvmansion.in/",
-    "image": "https://www.lvmansion.in/assets/images/header/lvmansion-hero.jpg"
+    "image": "https://www.lvmansion.in/assets/images/header/lvmansion-hero.jpg",
+    "hasMap": "https://maps.app.goo.gl/7cGam4kMnKoPk9Eq7"
   }
   </script>
 
-  <!-- Favicon (Update with your own favicon) -->
+  <!-- Favicon -->
   <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/svg" />
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
 
-  <!-- Preconnect to required origins -->
+  <!-- Geo-Location Meta Tags (International SEO Standards) -->
+  <meta name="geo.region" content="IN-KA" />
+  <meta name="geo.placename" content="Bengaluru" />
+  <meta name="geo.position" content="13.0718692;77.5729069" />
+  <meta name="ICBM" content="13.0718692, 77.5729069" />
+
+  <!-- Performance: Preconnect & DNS Prefetch -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://translate.google.com">
+  <link rel="dns-prefetch" href="https://translate.googleapis.com">
 
-  <!-- Styles -->
+  <!-- Critical CSS (Render Blocking) -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="assets/css/lineicons.css" />
-  <link rel="stylesheet" href="assets/css/tiny-slider.css" />
-  <link rel="stylesheet" href="assets/css/glightbox.min.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
 
-  <!-- Google Translate -->
+  <!-- Non-Critical CSS (Deferred for Performance) -->
+  <link rel="stylesheet" href="assets/css/lineicons.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="assets/css/lineicons.css" /></noscript>
+
+  <link rel="stylesheet" href="assets/css/tiny-slider.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="assets/css/tiny-slider.css" /></noscript>
+
+  <link rel="stylesheet" href="assets/css/glightbox.min.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="assets/css/glightbox.min.css" /></noscript>
+
+  <!-- Google Translate Configuration -->
   <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -83,35 +100,31 @@
         multilanguagePage: false
       }, 'google_translate_element');
 
-      // Function to apply stored language
-      function applyStoredLang() {
-        var storedLang = localStorage.getItem('googleTranslateLanguage');
-        if (storedLang) {
-          var select = document.querySelector('.goog-te-combo');
-          if (select) {
-            select.value = storedLang;
-            select.dispatchEvent(new Event('change'));
-          }
+      // Helper: Persist and Apply Language Selection
+      const applyStoredLang = () => {
+        const storedLang = localStorage.getItem('googleTranslateLanguage');
+        const select = document.querySelector('.goog-te-combo');
+        if (storedLang && select && select.value !== storedLang) {
+          select.value = storedLang;
+          select.dispatchEvent(new Event('change'));
         }
-      }
-
-      // Use a MutationObserver to wait for the widget to be added to the DOM
-      var observer = new MutationObserver(function(mutations, obs) {
-        var select = document.querySelector('.goog-te-combo');
         if (select) {
-          applyStoredLang();
-          // Store language on change
-          select.addEventListener('change', function() {
+          select.addEventListener('change', () => {
             localStorage.setItem('googleTranslateLanguage', select.value);
           });
-          obs.disconnect(); // Stop observing once the element is found and configured
+        }
+      };
+
+      // Observer: Wait for Google Translate Widget to Inject
+      const observer = new MutationObserver((mutations, obs) => {
+        if (document.querySelector('.goog-te-combo')) {
+          applyStoredLang();
+          obs.disconnect();
         }
       });
-
-      observer.observe(document.getElementById('google_translate_element'), {
-        childList: true,
-        subtree: true
-      });
+      
+      const target = document.getElementById('google_translate_element');
+      if (target) observer.observe(target, { childList: true, subtree: true });
     }
   </script>
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
@@ -123,7 +136,7 @@
   <section class="navbar-area navbar-nine">
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand notranslate" href="index.html">
+        <a class="navbar-brand notranslate" href="index.html" aria-label="LV Mansion Home">
           <strong>LV MANSION</strong> 
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNine" aria-controls="navbarNine" aria-expanded="false" aria-label="Toggle navigation">
@@ -132,7 +145,9 @@
 
         <div class="collapse navbar-collapse sub-menu-bar" id="navbarNine">
           <ul class="navbar-nav me-auto">
-            <li class="nav-item"><a class="page-scroll active" href="index.html#hero-area"></a></li>
+            <li class="nav-item">
+              <a class="page-scroll active" href="index.html#hero-area">Home</a>
+            </li>
          </ul>
           <div id="google_translate_element" class="ms-lg-3 mt-3 mt-lg-0"></div>
         </div>
@@ -146,374 +161,367 @@
       <div class="row align-items-center">
         <div class="col-lg-6 col-md-12">
           <div class="header-content">
-            <h2><A>LV MANSION</A></h2>
-            <p> ADDRESS: No.16, 13th CROSS,
-              <br>SIR M VISHVESHVARAIAH LAYOUT,
-              <br>KODIGEHALLI EXTENSION,
-              <br>BENGALURU NORTH,
-              <br>BENGALURU URBAN, KARNATAKA, INDIA 
-              <br>POSTAL PINCODE - 560097</p>
-            <div class="button">
+            <h1>LV MANSION</h1>
+            <address style="font-style: normal; line-height: 1.6; margin-bottom: 20px;">
+              <strong>ADDRESS:</strong> No.16, 13th CROSS,<br>
+              SIR M VISHVESHVARAIAH LAYOUT,<br>
+              KODIGEHALLI EXTENSION,<br>
+              BENGALURU NORTH,<br>
+              BENGALURU URBAN, KARNATAKA, INDIA<br>
+              POSTAL PINCODE - 560097
+            </address>
+            <div class="button"></div>
                 <a href="#map-view" class="btn primary-btn page-scroll">View on Map</a>
-                <a href="https://www.google.com/maps/dir//LV+Mansion,+16,+13th+Cross+Rd,+Sir+M.V.+Layout,+Extn,+Kodigehalli,+Bengaluru,+Karnataka+560097,+India/@13.0718692,77.5729069,17z/data=!4m16!1m7!3m6!1s0x3bae19004d3d6c29:0xf388ac95ddc41bc5!2sLV+Mansion!8m2!3d13.0718692!4d77.5729069!16s%2Fg%2F11ymhm60wx!4m7!1m0!1m5!1m1!1s0x3bae19004d3d6c29:0xf388ac95ddc41bc5!2m2!1d77.5729069!2d13.0718692?authuser=1&entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="btn primary-btn-outline">Get Directions</a>
-                <a href="https://maps.app.goo.gl/7cGam4kMnKoPk9Eq7" target="_blank" rel="noopener noreferrer" class="btn primary-btn-outline">Share Location</a>
+                <a href="https://www.google.com/maps/dir//LV+Mansion,+16,+13th+Cross+Rd,+Sir+M.V.+Layout,+Extn,+Kodigehalli,+Bengaluru,+Karnataka+560097,+India/@13.0718692,77.5729069,17z/data=!4m16!1m7!3m6!1s0x3bae19004d3d6c29:0xf388ac95ddc41bc5!2sLV+Mansion!8m2!3d13.0718692!4d77.5729069!16s%2Fg%2F11ymhm60wx!4m7!1m0!1m5!1m1!1s0x3bae19004d3d6c29:0xf388ac95ddc41bc5!2m2!1d77.5729069!2d13.0718692?authuser=1&entry=ttu" target="_blank" rel="noopener noreferrer" class="btn primary-btn-outline" aria-label="Get Directions to LV Mansion on Google Maps">Get Directions</a>
+                <a href="https://maps.app.goo.gl/7cGam4kMnKoPk9Eq7" target="_blank" rel="noopener noreferrer" class="btn primary-btn-outline" aria-label="Share LV Mansion Location">Share Location</a>
             </div>          
           </div>
         </div>
         <div class="col-lg-6 col-md-12">
           <div class="header-image">
-            <a href="https://lvmansion.in"><img src="assets/images/header/lvmansion-hero.jpg" alt="LV Mansion Bengaluru" /></a>
+            <a href="https://lvmansion.in">
+              <img src="assets/images/header/lvmansion-hero.jpg" 
+                   alt="LV Mansion Bengaluru - Exterior View" 
+                   class="img-fluid rounded shadow-lg"
+                   width="600" height="400"
+                   fetchpriority="high"
+                   decoding="async" />
+            </a>
           </div>
         </div>
       </div>
     </div>
   </section>
-<!--end of Hero -->
+  <!-- End Hero -->
 
+  <!-- Map Section -->
+  <section id="map-view" class="map-section map-style-9" style="padding:0; margin-top:40px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="map-container" style="width:100%; height:400px; overflow:hidden; border-radius:8px; background-color: #f0f0f0;">
+            <iframe
+              title="Google Map showing location of LV Mansion, Bengaluru"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.730397881094!2d77.5703319758742!3d13.07187438716168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae19004d3d6c29%3A0xf388ac95ddc41bc5!2sLV%20Mansion!5e0!3m2!1sen!2sin!4v1716987654321!5m2!1sen!2sin"
+              style="width:100%; height:100%; border:0; display:block;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Map Section -->
 
-          <!-- Map section placed below contact section -->
-          <section class="map-section map-style-9" style="padding:0; margin-top:40px;">
-            <div class="container">
-            <div class="row">
-              <div class="col-12">
-              <div class="map-container" style="width:100%; height:400px; overflow:hidden; border-radius:8px;">
-                <iframe
-                title="EDE Global location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.730397881094!2d77.5703319758742!3d13.07187438716168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae19004d3d6c29%3A0xf388ac95ddc41bc5!2sLV%20Mansion!5e0!3m2!1sen!2sin!4v1716987654321!5m2!1sen!2sin"
-                style="width:100%; height:100%; border:0; display:block;"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-              </div>
-              </div>
-            </div>
-            </div>
-          </section>
-          <!-- End Map Section -->
-
-  <!-- ========================= footer start ========================= -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
-
-          <!-- Footer widgets can be added here -->
       <div class="row">
         <div class="col-12">
           <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center">
             <p class="mb-0 small">
-              © <span id="year"></span> LV Mansion. All rights reserved.
+              &copy; <span id="year"></span> LV Mansion. All rights reserved.
             </p>
           </div>
         </div>
       </div>
     </div>
   </footer>
-  <!-- ========================= footer end ========================= -->
+  <!-- End Footer -->
 
-  <!-- ========================= scroll-top ========================= -->
-  <a href="#" class="scroll-top btn-hover">
+  <!-- Scroll Top -->
+  <a href="#" class="scroll-top btn-hover" aria-label="Scroll to top">
     <i class="lni lni-chevron-up"></i>
   </a>
 
-  <!--====== js ======-->
+  <!-- JS Assets (Deferred) -->
   <script src="assets/js/bootstrap.bundle.min.js" defer></script>
+  <!-- Note: glightbox, tiny-slider, and main.js are loaded dynamically below for better performance, 
+       but kept here as fallback if JS is disabled or for standard loading if preferred. 
+       To fully optimize, we rely on the dynamic loader below and keep these commented or remove the 'defer' duplicates if the dynamic loader handles them. 
+       However, per instructions to not delete content, we keep them but ensure the dynamic loader checks for existence. -->
   <script src="assets/js/glightbox.min.js" defer></script>
   <script src="assets/js/tiny-slider.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 
-<script>
-    /* Performance helper: defer non-critical scripts, lazy images, optimize events */
+  <script>
     (function () {
       'use strict';
-      
-      // Set footer year
-      const yearEl = document.getElementById('year');
-      if(yearEl) yearEl.textContent = new Date().getFullYear();
 
-      // Anti-copy & disable right-click
-      (function() {
-        const disallowKeys = ['a','c','x','s','u','p'];
+      // --- 1. Footer Year ---
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // --- 2. Security (Anti-copy & Disable Right-Click) ---
+      const disableInteraction = () => {
+        const disallowKeys = new Set(['a', 'c', 'x', 's', 'u', 'p']);
+        const preventDefault = (e) => e.preventDefault();
+
         document.body.style.userSelect = 'none';
         document.body.style.webkitUserSelect = 'none';
-        document.body.style.msUserSelect = 'none';
-        document.body.style.mozUserSelect = 'none';
-        ['copy','cut','dragstart','selectstart'].forEach(function (evt) {
-          document.addEventListener(evt, function (e) { e.preventDefault(); });
+        
+        ['copy', 'cut', 'dragstart', 'selectstart', 'contextmenu'].forEach(evt => {
+          document.addEventListener(evt, preventDefault, { passive: false });
         });
-        document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
-        document.addEventListener('keydown', function (e) {
+
+        document.addEventListener('keydown', (e) => {
           const k = e.key.toLowerCase();
-          if ((e.ctrlKey || e.metaKey) && disallowKeys.includes(k)) {
+          const isCtrl = e.ctrlKey || e.metaKey;
+          
+          if (isCtrl && disallowKeys.has(k)) {
             e.preventDefault();
           }
           if (
             k === 'f12' ||
-            (e.ctrlKey && e.shiftKey && ['i','j','c'].includes(k)) ||
-            (e.ctrlKey && k === 'u')
+            (isCtrl && e.shiftKey && ['i', 'j', 'c'].includes(k)) ||
+            (isCtrl && k === 'u')
           ) {
             e.preventDefault();
           }
-        });
-      })();
+        }, { passive: false });
+      };
+      disableInteraction();
 
-      document.querySelectorAll('img:not([loading])').forEach(img => {
-        if (!img.closest('.header-image')) { // Don't lazy load the hero image
-          img.setAttribute('loading', 'lazy');
+      // --- 3. Image Optimization (Lazy Loading & Decoding) ---
+      const optimizeImages = () => {
+        const imgs = document.querySelectorAll('img:not([loading])');
+        for (let i = 0; i < imgs.length; i++) {
+          const img = imgs[i];
+          if (!img.closest('.header-image')) {
+            img.setAttribute('loading', 'lazy');
+          }
+          img.setAttribute('decoding', 'async');
         }
-        img.setAttribute('decoding', 'async');
-      });
-      
-      const bgLazy = document.querySelectorAll('[data-bg]');
-      if (bgLazy.length && 'IntersectionObserver' in window) {
-        const io = new IntersectionObserver(entries => {
-          entries.forEach(e => {
-            if (e.isIntersecting) {
-              const el = e.target;
-              const src = el.getAttribute('data-bg');
-              el.style.backgroundImage = 'url(' + src + ')';
-              io.unobserve(el);
-            }
-          });
-        }, { rootMargin: '300px 0px' });
-        bgLazy.forEach(el => io.observe(el));
+      };
+      // Run immediately if DOM is ready, or defer slightly
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', optimizeImages);
+      } else {
+        optimizeImages();
       }
-      
+
+      // --- 4. Background Image Lazy Loading ---
+      if ('IntersectionObserver' in window) {
+        const bgLazy = document.querySelectorAll('[data-bg]');
+        if (bgLazy.length > 0) {
+          const io = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const el = entry.target;
+                el.style.backgroundImage = `url(${el.getAttribute('data-bg')})`;
+                observer.unobserve(el);
+              }
+            });
+          }, { rootMargin: '300px 0px' });
+          bgLazy.forEach(el => io.observe(el));
+        }
+      }
+
+      // --- 5. Resource Hints (Preconnect) ---
       const preconnects = [
         'https://fonts.googleapis.com',
         'https://fonts.gstatic.com',
         'https://translate.googleapis.com',
         'https://translate.google.com'
       ];
+      const head = document.head;
       preconnects.forEach(href => {
-        if (!document.querySelector('link[rel="preconnect"][href="' + href + '"]')) {
+        if (!document.querySelector(`link[rel="preconnect"][href="${href}"]`)) {
           const l = document.createElement('link');
           l.rel = 'preconnect';
           l.href = href;
           l.crossOrigin = 'anonymous';
-          document.head.appendChild(l);
+          head.appendChild(l);
         }
       });
-      function loadScript(src) {
-        return new Promise((res, rej) => {
-          if (document.querySelector('script[src="' + src + '"]')) return res();
+
+      // --- 6. Dynamic Script Loading Helper ---
+      const loadScript = (src) => {
+        return new Promise((resolve, reject) => {
+          if (document.querySelector(`script[src="${src}"]`)) return resolve();
           const s = document.createElement('script');
           s.src = src;
           s.async = true;
-          s.onload = res;
-          s.onerror = rej;
-          document.head.appendChild(s);
-        });
-      }
-      const optionalLibs = [
-        'assets/js/glightbox.min.js',
-        'assets/js/tiny-slider.js',
-        'assets/js/main.js'
-      ];
-      function loadOptional() {
-        let chain = Promise.resolve();
-        optionalLibs.forEach(lib => { chain = chain.then(() => loadScript(lib)); });
-      }
-      (window.requestIdleCallback || function (cb) { setTimeout(cb, 120); })(loadOptional);
-
-      ['scroll','touchstart','touchmove','wheel'].forEach(evt => {
-        window.addEventListener(evt, function(){}, { passive: true });
-      });
-      
-      const fixFontDisplay = () => {
-        Array.from(document.styleSheets).forEach(ss => {
-          try {
-            Array.from(ss.cssRules || []).forEach(r => {
-              if (r.type === CSSRule.FONT_FACE_RULE && !/font-display/i.test(r.cssText)) {
-                r.style.fontDisplay = 'swap';
-              }
-            });
-          } catch (_) {}
+          s.onload = resolve;
+          s.onerror = reject;
+          document.body.appendChild(s);
         });
       };
-      document.fonts && document.fonts.ready.then(fixFontDisplay);
-      
+
+      // --- 7. Passive Event Listeners (Performance) ---
+      ['scroll', 'touchstart', 'touchmove', 'wheel'].forEach(evt => {
+        window.addEventListener(evt, () => {}, { passive: true });
+      });
+
+      // --- 8. Font Display Swap Fix ---
+      const fixFontDisplay = () => {
+        // Use requestIdleCallback to avoid blocking main thread during load
+        (window.requestIdleCallback || window.setTimeout)(() => {
+          for (const sheet of document.styleSheets) {
+            try {
+              for (const rule of (sheet.cssRules || [])) {
+                if (rule.type === CSSRule.FONT_FACE_RULE && !rule.style.fontDisplay) {
+                  rule.style.fontDisplay = 'swap';
+                }
+              }
+            } catch (e) { /* Cross-origin styles might throw security errors */ }
+          }
+        });
+      };
+      if (document.fonts) document.fonts.ready.then(fixFontDisplay);
+
+      // --- 9. Hero Image Aspect Ratio Fix ---
       const heroImg = document.querySelector('.header-image img');
-      if (heroImg && !heroImg.width) {
+      if (heroImg && !heroImg.hasAttribute('width')) {
         heroImg.style.aspectRatio = '16/9';
         heroImg.style.display = 'block';
       }
-      
+
+      // --- 10. Link Prefetching on Hover ---
       const internalLinks = document.querySelectorAll('a[href$=".html"]:not([data-noprefetch])');
+      const prefetchLink = (href) => {
+        if (document.querySelector(`link[rel="prefetch"][href="${href}"]`)) return;
+        const l = document.createElement('link');
+        l.rel = 'prefetch';
+        l.href = href;
+        head.appendChild(l);
+      };
       internalLinks.forEach(a => {
-        let loaded = false;
-        const prefetch = () => {
-          if (loaded) return;
-            loaded = true;
-            const l = document.createElement('link');
-            l.rel = 'prefetch';
-            l.href = a.href;
-            document.head.appendChild(l);
+        a.addEventListener('mouseenter', () => prefetchLink(a.href), { passive: true, once: true });
+        a.addEventListener('focus', () => prefetchLink(a.href), { passive: true, once: true });
+      });
+
+      // --- 11. Google Translate Initialization ---
+      window.googleTranslateElementInit = function() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: 'en,hi,mr,kn,te,ta,ml,pa,gu,bn,ur,as',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false,
+          multilanguagePage: false
+        }, 'google_translate_element');
+
+        const applyStoredLang = () => {
+          const storedLang = localStorage.getItem('googleTranslateLanguage');
+          const select = document.querySelector('.goog-te-combo');
+          if (storedLang && select && select.value !== storedLang) {
+            select.value = storedLang;
+            select.dispatchEvent(new Event('change'));
+          }
         };
-        a.addEventListener('mouseenter', prefetch, { passive: true });
-        a.addEventListener('focus', prefetch);
-      });
-      function chunk(fn) {
-        (window.requestIdleCallback || setTimeout)(fn, 0);
-      }
-      chunk(() => {
-        // Placeholder: any future heavy init goes here
-      });
-    })();
-    // Overwrite the Google Translate initialization to remove Oriya (or)
-    window.googleTranslateElementInit = function() {
-      new google.translate.TranslateElement({
-      pageLanguage: 'en',
-      includedLanguages: 'en,hi,mr,kn,te,ta,ml,pa,gu,bn,ur,as',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-      autoDisplay: false,
-      multilanguagePage: false
-      }, 'google_translate_element');
 
-      // Function to apply stored language
-      function applyStoredLang() {
-      var storedLang = localStorage.getItem('googleTranslateLanguage');
-      if (storedLang) {
-        var select = document.querySelector('.goog-te-combo');
-        if (select) {
-        select.value = storedLang;
-        select.dispatchEvent(new Event('change'));
-        }
-      }
-      }
-
-      // Use a MutationObserver to wait for the widget to be added to the DOM
-      var observer = new MutationObserver(function(mutations, obs) {
-      var select = document.querySelector('.goog-te-combo');
-      if (select) {
-        applyStoredLang();
-        // Store language on change
-        select.addEventListener('change', function() {
-        localStorage.setItem('googleTranslateLanguage', select.value);
+        const observer = new MutationObserver((mutations, obs) => {
+          const select = document.querySelector('.goog-te-combo');
+          if (select) {
+            applyStoredLang();
+            select.addEventListener('change', () => {
+              localStorage.setItem('googleTranslateLanguage', select.value);
+            });
+            obs.disconnect();
+          }
         });
-        obs.disconnect(); // Stop observing once the element is found and configured
-      }
-      });
 
-      observer.observe(document.getElementById('google_translate_element'), {
-      childList: true,
-      subtree: true
-      });
-    };
-    // Google Fonts loader for translation languages
-    window.WebFontConfig = {
-      google: {
-      families: [
-        'Noto Sans:400,700', // Latin (en)
-        'Noto Sans Devanagari:400,700', // Hindi (hi), Marathi (mr), Marwari (mwr)
-        'Noto Sans Kannada:400,700', // Kannada (kn)
-        'Noto Sans Telugu:400,700', // Telugu (te)
-        'Noto Sans Tamil:400,700', // Tamil (ta)
-        'Noto Sans Malayalam:400,700', // Malayalam (ml)
-        'Noto Sans Gurmukhi:400,700', // Punjabi (pa)
-        'Noto Sans Gujarati:400,700', // Gujarati (gu)
-        'Noto Sans Bengali:400,700', // Bengali (bn)
-        'Noto Nastaliq Urdu:400,700' // Urdu (ur)
-      ]
-      },
-      active: function() {
-      // Optional: Add a class or trigger layout updates when fonts are active
-      document.body.classList.add('fonts-loaded');
-      }
-    };
+        const target = document.getElementById('google_translate_element');
+        if (target) observer.observe(target, { childList: true, subtree: true });
+      };
 
-    (function() {
+      // --- 12. WebFont Loader (Google Fonts) ---
+      window.WebFontConfig = {
+        google: {
+          families: [
+            'Noto Sans:400,700',
+            'Noto Sans Devanagari:400,700',
+            'Noto Sans Kannada:400,700',
+            'Noto Sans Telugu:400,700',
+            'Noto Sans Tamil:400,700',
+            'Noto Sans Malayalam:400,700',
+            'Noto Sans Gurmukhi:400,700',
+            'Noto Sans Gujarati:400,700',
+            'Noto Sans Bengali:400,700',
+            'Noto Nastaliq Urdu:400,700'
+          ]
+        },
+        active: () => document.body.classList.add('fonts-loaded')
+      };
+
+      // Load WebFont script asynchronously
       const wf = document.createElement('script');
       wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
-      wf.type = 'text/javascript';
       wf.async = true;
-      const s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(wf, s);
-    })();
-    // Function to handle dynamic script loading with defer
-    function loadScript(src, isAsync = true) {
-      if (document.querySelector(`script[src="${src}"]`)) {
-        return; // Script already loaded or loading
-      }
-      const script = document.createElement('script');
-      script.src = src;
-      if (isAsync) {
-        script.async = true;
-      } else {
-        script.defer = true;
-      }
-      document.body.appendChild(script);
-    }
+      document.head.appendChild(wf);
 
-    // Defer loading of non-critical JS after page is interactive
-    document.addEventListener('DOMContentLoaded', () => {
-      // Use requestIdleCallback for non-essential scripts to avoid blocking main thread
+      // --- 13. Optional Features Initialization (Idle Load) ---
+      const initOptionalFeatures = () => {
+        // Check if scripts are already loaded by standard tags to avoid duplicates
+        const scripts = [
+          'assets/js/tiny-slider.js',
+          'assets/js/glightbox.min.js',
+          'assets/js/main.js'
+        ];
+        
+        let chain = Promise.resolve();
+        scripts.forEach(src => {
+          chain = chain.then(() => loadScript(src));
+        });
+      };
+
       if ('requestIdleCallback' in window) {
         requestIdleCallback(initOptionalFeatures);
       } else {
-        setTimeout(initOptionalFeatures, 500); // Fallback for older browsers
+        setTimeout(initOptionalFeatures, 2000); // Delayed fallback
       }
-    });
 
-    function initOptionalFeatures() {
-      // Scripts for sliders, lightboxes etc. can be loaded when browser is idle
-      loadScript('assets/js/tiny-slider.js');
-      loadScript('assets/js/glightbox.min.js');
-      loadScript('assets/js/main.js'); // Assuming this contains component initializations
-    }
-
-    // Preload key assets on user interaction to speed up navigation
-    (function() {
-      let isPreloaded = false;
+      // --- 14. Critical Asset Preloading (Interaction Based) ---
       const preloadHandler = () => {
-        if (isPreloaded) return;
-        isPreloaded = true;
-
         const preloads = [
           { href: 'assets/css/style.css', as: 'style' },
           { href: 'assets/images/about/about-img1.jpg', as: 'image' }
         ];
 
         preloads.forEach(p => {
-          const link = document.createElement('link');
-          link.rel = 'preload';
-          link.href = p.href;
-          link.as = p.as;
-          document.head.appendChild(link);
+          if (!document.querySelector(`link[rel="preload"][href="${p.href}"]`)) {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.href = p.href;
+            link.as = p.as;
+            head.appendChild(link);
+          }
         });
-
-        // Remove event listeners after preloading
+        
         ['mouseover', 'touchstart', 'scroll'].forEach(evt => {
           window.removeEventListener(evt, preloadHandler);
         });
       };
 
-      // Trigger preload on first user interaction
       ['mouseover', 'touchstart', 'scroll'].forEach(evt => {
         window.addEventListener(evt, preloadHandler, { once: true, passive: true });
       });
+
+      // --- 15. Critical Image Prioritization ---
+      // Specifically targeting the hero image defined in previous code blocks
+      const prioritizeHero = () => {
+        const logoImg = document.querySelector('img[src*="lvmansion-hero.jpg"]');
+        if (logoImg) {
+          logoImg.removeAttribute('loading');
+          logoImg.setAttribute('loading', 'eager');
+          logoImg.setAttribute('fetchpriority', 'high');
+          
+          // Add preload link if not exists
+          const src = logoImg.getAttribute('src');
+          if (!document.querySelector(`link[rel="preload"][href="${src}"]`)) {
+            const preloadLink = document.createElement('link');
+            preloadLink.rel = 'preload';
+            preloadLink.as = 'image';
+            preloadLink.href = src;
+            head.appendChild(preloadLink);
+          }
+        }
+      };
+      prioritizeHero();
+
     })();
-
-    (function() {
-      // Ensure critical images like the logo are not lazy-loaded and are prioritized.
-      const logoImages = document.querySelectorAll('img[src="assets/image/edeglobal.jpg"]');
-      logoImages.forEach(img => {
-        // Remove lazy loading in case it was added by a generic script.
-        img.removeAttribute('loading');
-        // Ensure it loads eagerly as it's a critical, above-the-fold element.
-        img.setAttribute('loading', 'eager');
-        img.setAttribute('fetchpriority', 'high');
-      });
-
-      // To make the logo load faster, we can add a preload link to the document head.
-      // This tells the browser to fetch this resource with high priority.
-      if (!document.querySelector('link[href="assets/image/edeglobal.jpg"]')) {
-        const preloadLink = document.createElement('link');
-        preloadLink.rel = 'preload';
-        preloadLink.as = 'image';
-        preloadLink.href = 'assets/image/edeglobal.jpg';
-        document.head.appendChild(preloadLink);
-      }
-    })();
-
   </script>
 </body>
 </html>
