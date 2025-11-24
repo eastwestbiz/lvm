@@ -528,6 +528,52 @@
       prioritizeHero();
 
     })();
+
+// <!-- Preload & Preconnect for Google Services (Performance Optimization) -->
+
+    (function() {
+      const head = document.head;
+      
+      // 1. Preconnect to Google Domains
+      const domains = [
+        'https://maps.googleapis.com',
+        'https://maps.gstatic.com',
+        'https://fonts.googleapis.com',
+        'https://fonts.gstatic.com',
+        'https://translate.googleapis.com'
+      ];
+
+      domains.forEach(domain => {
+        if (!document.querySelector(`link[rel="preconnect"][href="${domain}"]`)) {
+          const link = document.createElement('link');
+          link.rel = 'preconnect';
+          link.href = domain;
+          if (domain.includes('gstatic')) link.crossOrigin = 'anonymous';
+          head.appendChild(link);
+        }
+      });
+
+      // 2. Preload Critical Fonts (Optional but recommended for LCP)
+      // This ensures the browser starts downloading the font file early if known
+      // Example: Noto Sans
+      // const fontLink = document.createElement('link');
+      // fontLink.rel = 'preload';
+      // fontLink.as = 'font';
+      // fontLink.href = 'https://fonts.gstatic.com/s/notosans/v27/o-0IIpQlx3QUlC5A4PNr5TRA.woff2'; 
+      // fontLink.type = 'font/woff2';
+      // fontLink.crossOrigin = 'anonymous';
+      // head.appendChild(fontLink);
+
+    })();
+
   </script>
+
 </body>
+
 </html>
+
+
+
+  <script>
+
+  </script>
