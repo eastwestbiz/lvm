@@ -1,3 +1,4 @@
+
 /* style.css */
 :root {
   --primary-color: #2563eb;
@@ -173,6 +174,12 @@ p {
   font-size: 1.25rem;
   margin-bottom: 2rem;
   color: var(--text-light);
+}
+
+.header-content .button {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .header-image {
@@ -713,12 +720,16 @@ p {
   }
 }
 
-@media (max-width: 767px) {
-  .navbar-nav {
-    text-align: center;
-    padding: 20px 0;
-  }
+    .header-content {
+      text-align: center;
+      margin-bottom: 40px;
+    }
   
+    .header-content .button {
+      justify-content: center;
+    }
+    
+    .contact-form-wrapper {
   .header-content {
     text-align: center;
     margin-bottom: 40px;
@@ -1721,4 +1732,3 @@ p {
                     background-color: #d1e7dd;
                     color: #0f5132;
                   }
-
