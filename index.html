@@ -289,10 +289,16 @@
         const imgs = document.querySelectorAll('img:not([loading])');
         for (let i = 0; i < imgs.length; i++) {
           const img = imgs[i];
-          if (!img.closest('.header-image')) {
-            img.setAttribute('loading', 'lazy');
+          if (img.closest('.header-image')) {
+        // Optimize Header Image (LCP) for speed
+        img.setAttribute('loading', 'eager');
+        img.setAttribute('fetchpriority', 'high');
+        img.setAttribute('decoding', 'sync'); 
+          } else {
+        // Defer other images
+        img.setAttribute('loading', 'lazy');
+        img.setAttribute('decoding', 'async');
           }
-          img.setAttribute('decoding', 'async');
         }
       };
       // Run immediately if DOM is ready, or defer slightly
@@ -375,7 +381,7 @@
       // --- 9. Hero Image Aspect Ratio Fix ---
       const heroImg = document.querySelector('.header-image img');
       if (heroImg && !heroImg.hasAttribute('width')) {
-        heroImg.style.aspectRatio = '16/9';
+        heroImg.style.aspectRatio = '9/9';
         heroImg.style.display = 'block';
       }
 
